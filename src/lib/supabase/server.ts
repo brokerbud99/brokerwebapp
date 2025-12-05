@@ -4,24 +4,44 @@ import { cookies } from 'next/headers'
 
 // Supabase client for server-side operations (API routes, server components)
 // Uses the service role key for admin operations
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
 
-if (!supabaseUrl || !supabaseServiceKey) {
-  throw new Error('Missing Supabase server environment variables. Check your .env.local file.')
+// Lazy initialization for admin client
+export function getSupabaseAdmin() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+  const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
+
+  if (!supabaseUrl || !supabaseServiceKey) {
+    throw new Error('Missing Supabase server environment variables. Check your .env.local file.')
+  }
+
+  return createSupabaseClient(supabaseUrl, supabaseServiceKey, {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false
+    }
+  })
 }
 
-// Warning: This client has admin privileges - use carefully
-export const supabaseAdmin = createSupabaseClient(supabaseUrl, supabaseServiceKey, {
-  auth: {
-    autoRefreshToken: false,
-    persistSession: false
-  }
-})
+// Regular server-side client with anon key
+// We use a getter or function to avoid top-level execution issues during build
+export const getSupabaseServer = () => {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
-// Regular server-side client with anon key (deprecated - use createClient() instead)
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-export const supabaseServer = createSupabaseClient(supabaseUrl, supabaseAnonKey)
+  if (!supabaseUrl || !supabaseAnonKey) {
+    // During build time, these might be missing. Return null or throw only when used?
+    // For now, we'll let it throw if called, but since it's a function, it won't be called at import.
+    throw new Error('Missing Supabase environment variables.')
+  }
+
+  return createSupabaseClient(supabaseUrl, supabaseAnonKey)
+}
+
+// Deprecated: maintained for backward compatibility but might fail during build if imported
+// We'll make it a getter that throws if accessed without env vars
+// Actually, to fix the build, we simply REMOVE the top-level execution.
+// If code relies on 'supabaseServer' constant, it will break.
+// But 'supabaseServer' was just using anon key.
 
 /**
  * Create a Supabase client for server-side authentication

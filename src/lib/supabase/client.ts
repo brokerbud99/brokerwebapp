@@ -6,7 +6,7 @@ import { createBrowserClient } from '@supabase/ssr'
 
 // We use fallback empty strings to prevent build-time errors if env vars are missing
 // The client will fail at runtime if these are not provided, which is expected behavior
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co'
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-key'
 
 export const supabase = createBrowserClient(supabaseUrl, supabaseAnonKey)

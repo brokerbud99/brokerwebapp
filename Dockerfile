@@ -19,6 +19,9 @@ COPY . .
 # Set environment variables for build
 # Note: Sensitive values should be passed at build time via --build-arg
 ENV NEXT_TELEMETRY_DISABLED=1
+ARG NEXT_PUBLIC_SUPABASE_URL
+ARG NEXT_PUBLIC_SUPABASE_ANON_KEY
+ARG SUPABASE_SERVICE_ROLE_KEY
 
 # Build the application
 RUN npm run build

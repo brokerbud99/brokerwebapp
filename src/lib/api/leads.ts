@@ -146,7 +146,7 @@ export async function deleteLead(id: string) {
 /**
  * Get leads by status
  */
-export async function getLeadsByStatus(status: Lead['status']) {
+export async function getLeadsByStatus(status: Lead['lead_status']) {
   const response = await fetch(`/api/leads?status=${status}`, {
     method: 'GET',
     headers: {

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
@@ -44,16 +44,7 @@ export function UploadModal({ isOpen, onClose, onUploadComplete }: UploadModalPr
         setIsAdhoc(false)
     }
 
-    useEffect(() => {
-        if (isOpen) {
-            resetForm()
-            if (profile?.company_code) {
-                fetchApplications()
-            }
-        }
-    }, [isOpen, profile?.company_code])
-
-    const fetchApplications = async () => {
+    const fetchApplications = useCallback(async () => {
         try {
             setLoadingApps(true)
             const { data, error } = await supabase
@@ -69,7 +60,16 @@ export function UploadModal({ isOpen, onClose, onUploadComplete }: UploadModalPr
         } finally {
             setLoadingApps(false)
         }
-    }
+    }, [profile?.company_code])
+
+    useEffect(() => {
+        if (isOpen) {
+            resetForm()
+            if (profile?.company_code) {
+                fetchApplications()
+            }
+        }
+    }, [isOpen, profile?.company_code, fetchApplications])
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {

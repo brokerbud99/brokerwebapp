@@ -1,11 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { signIn, signUp } from '@/lib/api/auth'
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [isLogin, setIsLogin] = useState(true)
@@ -112,8 +112,8 @@ export default function LoginPage() {
                     setError('')
                   }}
                   className={`flex-1 py-2 px-4 rounded-md font-medium transition-all ${isLogin
-                      ? 'bg-card text-primary shadow-sm border-2 border-primary'
-                      : 'text-muted-foreground hover:text-foreground border-2 border-transparent'
+                    ? 'bg-card text-primary shadow-sm border-2 border-primary'
+                    : 'text-muted-foreground hover:text-foreground border-2 border-transparent'
                     }`}
                 >
                   Login
@@ -124,8 +124,8 @@ export default function LoginPage() {
                     setError('')
                   }}
                   className={`flex-1 py-2 px-4 rounded-md font-medium transition-all ${!isLogin
-                      ? 'bg-card text-primary shadow-sm border-2 border-primary'
-                      : 'text-muted-foreground hover:text-foreground border-2 border-transparent'
+                    ? 'bg-card text-primary shadow-sm border-2 border-primary'
+                    : 'text-muted-foreground hover:text-foreground border-2 border-transparent'
                     }`}
                 >
                   Register
@@ -148,8 +148,8 @@ export default function LoginPage() {
               {error && (
                 <div
                   className={`mb-6 p-4 rounded-lg ${error.includes('successful')
-                      ? 'bg-success/10 text-success border border-success/20'
-                      : 'bg-destructive/10 text-destructive border border-destructive/20'
+                    ? 'bg-success/10 text-success border border-success/20'
+                    : 'bg-destructive/10 text-destructive border border-destructive/20'
                     }`}
                 >
                   <p className="text-sm">{error}</p>
@@ -358,5 +358,13 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <LoginForm />
+    </Suspense>
   )
 }

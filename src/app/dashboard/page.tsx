@@ -10,7 +10,7 @@ export default function DashboardPage() {
       {/* Welcome Section */}
       <div>
         <h1 className="text-3xl font-bold text-foreground mb-2">Welcome back!</h1>
-        <p className="text-muted-foreground">Here's what's happening with your mortgage brokerage today.</p>
+        <p className="text-muted-foreground">Here&apos;s what&apos;s happening with your mortgage brokerage today.</p>
       </div>
 
       {/* Key Metrics */}
@@ -170,7 +170,7 @@ export default function DashboardPage() {
               </div>
               <div className="flex-1">
                 <p className="text-sm text-foreground">
-                  <span className="font-medium">Sarah Johnson's</span> loan application was approved
+                  <span className="font-medium">Sarah Johnson&apos;s</span> loan application was approved
                 </p>
                 <p className="text-xs text-muted-foreground mt-1">2 hours ago</p>
               </div>

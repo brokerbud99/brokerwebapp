@@ -63,7 +63,7 @@ export default function LandingPage() {
 
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
                 From Lead Management to Loan Applications, DealTrack streamlines your entire business process.
-                Focus on what you do best, we'll handle the rest.
+                Focus on what you do best, we&apos;ll handle the rest.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-6 pt-2">
@@ -244,8 +244,8 @@ export default function LandingPage() {
                     ))}
                   </div>
                   <p className="text-muted-foreground mb-6 italic">
-                    "DealTrack has transformed our business operations. We've reduced processing time by 60% and our
-                    customers love the professional service."
+                    &quot;DealTrack has transformed our business operations. We&apos;ve reduced processing time by 60% and our
+                    customers love the professional service.&quot;
                   </p>
                 </CardContent>
               </Card>
@@ -258,8 +258,8 @@ export default function LandingPage() {
                     ))}
                   </div>
                   <p className="text-muted-foreground mb-6 italic">
-                    "The lead management feature is incredibly powerful. It's saved us countless hours and helped
-                    us close more deals."
+                    &quot;The lead management feature is incredibly powerful. It&apos;s saved us countless hours and helped
+                    us close more deals.&quot;
                   </p>
                 </CardContent>
               </Card>
@@ -272,8 +272,8 @@ export default function LandingPage() {
                     ))}
                   </div>
                   <p className="text-muted-foreground mb-6 italic">
-                    "Excellent customer support and the analytics help us make better business decisions. Highly
-                    recommended!"
+                    &quot;Excellent customer support and the analytics help us make better business decisions. Highly
+                    recommended!&quot;
                   </p>
                 </CardContent>
               </Card>

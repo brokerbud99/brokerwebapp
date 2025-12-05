@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Main Background - bg-neutral-950 (Very dark, nearly black) */
+    --background: 0 0% 3.9%;
+    --foreground: 48 100% 96.1%;
+    /* text-yellow-50 (Pale yellow/cream) */
+
+    /* Secondary Background & Cards - bg-neutral-900 (Deep neutral gray) */
+    --card: 0 0% 9%;
+    --card-foreground: 48 100% 96.1%;
+
+    /* Popover colors */
+    --popover: 0 0% 9%;
+    --popover-foreground: 48 100% 96.1%;
+
+    /* Primary Color (Buttons/Highlights) - bg-yellow-600 (Gold) */
+    --primary: 48 94% 53%;
+    --primary-foreground: 0 0% 3.9%;
+
+    /* Secondary Accent - text-yellow-500 (Bright Gold) */
+    --secondary: 48 96% 56%;
+    --secondary-foreground: 0 0% 3.9%;
+
+    /* Muted colors - using neutral tones */
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 63.9%;
+    /* text-neutral-400 (Medium gray) */
+
+    /* Accent colors - secondary gold accent */
+    --accent: 48 96% 56%;
+    --accent-foreground: 0 0% 3.9%;
+
+    /* Semantic colors */
+    --destructive: 4 100% 60%;
+    --destructive-foreground: 48 100% 96.1%;
+
+    /* Success color */
+    --success: 145 63% 49%;
+    --success-foreground: 48 100% 96.1%;
+
+    /* Warning color */
+    --warning: 36 100% 50%;
+    --warning-foreground: 0 0% 3.9%;
+
+    /* Info color */
+    --info: 211 100% 50%;
+    --info-foreground: 48 100% 96.1%;
+
+    /* Borders - border-neutral-800 (Dark gray border) */
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 48 94% 53%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  header {
+    border: none !important;
+  }
+}
+
+@layer components {
+  .blob-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  @keyframes rotate-out-top {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes rotate-in-top {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes rotate-out-bottom {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes rotate-in-bottom {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .blob-out-top {
+    animation: rotate-out-top 20s linear infinite;
+    transform-origin: 13px 25px;
+  }
+
+  .blob-in-top {
+    animation: rotate-in-top 10s linear infinite;
+    transform-origin: 13px 25px;
+  }
+
+  .blob-out-bottom {
+    animation: rotate-out-bottom 25s linear infinite;
+    transform-origin: 84px 93px;
+  }
+
+  .blob-in-bottom {
+    animation: rotate-in-bottom 15s linear infinite;
+    transform-origin: 84px 93px;
+  }
+}

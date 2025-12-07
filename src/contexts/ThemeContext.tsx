@@ -11,7 +11,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-    const [currentTheme, setCurrentTheme] = useState<Theme>(themes[0])
+    const [currentTheme, setCurrentTheme] = useState<Theme>(themes.find(t => t.id === 'modern-forest-mint') || themes[0])
     const [mounted, setMounted] = useState(false)
 
     // Initialize theme from local storage

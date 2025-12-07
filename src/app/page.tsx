@@ -36,8 +36,8 @@ export default function LandingPage() {
             <span className="text-2xl font-bold text-primary">DealTrack</span>
           </Link>
           <div className="flex items-center space-x-3">
-            <BackgroundSelector />
-            <ThemeSelector />
+            {/* <BackgroundSelector /> */}
+            {/* <ThemeSelector /> */}
             <Button className="bg-secondary hover:bg-secondary/90 text-secondary-foreground border-2 border-primary">
               <Link href="/login">Login</Link>
             </Button>

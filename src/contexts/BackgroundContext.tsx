@@ -11,7 +11,7 @@ interface BackgroundContextType {
 const BackgroundContext = createContext<BackgroundContextType | undefined>(undefined)
 
 export function BackgroundProvider({ children }: { children: React.ReactNode }) {
-    const [currentPattern, setCurrentPattern] = useState<BackgroundPatternId>('blobs')
+    const [currentPattern, setCurrentPattern] = useState<BackgroundPatternId>('dots')
     const [mounted, setMounted] = useState(false)
 
     // Initialize from local storage

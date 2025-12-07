@@ -13,7 +13,7 @@ const DashboardThemeContext = createContext<DashboardThemeContextType | undefine
 
 export function DashboardThemeProvider({ children }: { children: React.ReactNode }) {
     // Default to a dark theme for dashboard if not set
-    const defaultTheme = themes.find(t => t.id === 'modern-neon-cyber') || themes[0]
+    const defaultTheme = themes.find(t => t.id === 'light-mint-fresh') || themes[0]
     const [currentTheme, setCurrentTheme] = useState<Theme>(defaultTheme)
     const [mounted, setMounted] = useState(false)
 

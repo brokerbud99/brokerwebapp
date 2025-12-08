@@ -261,11 +261,9 @@ export const realtime = {
     filters?: { event?: 'INSERT' | 'UPDATE' | 'DELETE' | '*', filter?: string }
   ) => {
     const channel = supabase
-      .channel(`${table}-changes`) as any
-
-    channel
+      .channel(`${table}-changes`)
       .on(
-        'postgres_changes',
+        'postgres_changes' as any,
         {
           event: filters?.event ?? '*',
           schema: 'public',

@@ -260,8 +260,10 @@ export const realtime = {
     callback: (payload: any) => void,
     filters?: { event?: 'INSERT' | 'UPDATE' | 'DELETE' | '*', filter?: string }
   ) => {
-    let channel = supabase
-      .channel(`${table}-changes`)
+    const channel = supabase
+      .channel(`${table}-changes`) as any
+
+    channel
       .on(
         'postgres_changes',
         {

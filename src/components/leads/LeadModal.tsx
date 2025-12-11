@@ -134,6 +134,7 @@ export default function LeadModal({ open, onClose, onSave, lead, mode }: LeadMod
                     value={formData.first_name}
                     onChange={(e) => handleChange("first_name", e.target.value)}
                     required
+                    className="text-foreground"
                   />
                 </div>
                 <div>
@@ -143,6 +144,7 @@ export default function LeadModal({ open, onClose, onSave, lead, mode }: LeadMod
                     value={formData.last_name}
                     onChange={(e) => handleChange("last_name", e.target.value)}
                     required
+                    className="text-foreground"
                   />
                 </div>
               </div>
@@ -155,6 +157,7 @@ export default function LeadModal({ open, onClose, onSave, lead, mode }: LeadMod
                     type="email"
                     value={formData.email || ""}
                     onChange={(e) => handleChange("email", e.target.value)}
+                    className="text-foreground"
                   />
                 </div>
                 <div>
@@ -164,6 +167,7 @@ export default function LeadModal({ open, onClose, onSave, lead, mode }: LeadMod
                     value={formData.mobile_phone || ""}
                     onChange={(e) => handleChange("mobile_phone", e.target.value)}
                     required
+                    className="text-foreground"
                   />
                 </div>
               </div>
@@ -175,6 +179,7 @@ export default function LeadModal({ open, onClose, onSave, lead, mode }: LeadMod
                     id="alternative_phone"
                     value={formData.alternative_phone || ""}
                     onChange={(e) => handleChange("alternative_phone", e.target.value)}
+                    className="text-foreground"
                   />
                 </div>
                 <div>
@@ -183,7 +188,7 @@ export default function LeadModal({ open, onClose, onSave, lead, mode }: LeadMod
                     value={formData.lead_status}
                     onValueChange={(value) => handleChange("lead_status", value)}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="text-foreground">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -208,7 +213,7 @@ export default function LeadModal({ open, onClose, onSave, lead, mode }: LeadMod
                     value={formData.lead_source || ""}
                     onValueChange={(value) => handleChange("lead_source", value)}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="text-foreground">
                       <SelectValue placeholder="Select source" />
                     </SelectTrigger>
                     <SelectContent>
@@ -227,6 +232,7 @@ export default function LeadModal({ open, onClose, onSave, lead, mode }: LeadMod
                     id="referrer_name"
                     value={formData.referrer_name || ""}
                     onChange={(e) => handleChange("referrer_name", e.target.value)}
+                    className="text-foreground"
                   />
                 </div>
               </div>
@@ -238,7 +244,7 @@ export default function LeadModal({ open, onClose, onSave, lead, mode }: LeadMod
                     value={formData.preferred_contact_method || ""}
                     onValueChange={(value) => handleChange("preferred_contact_method", value)}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="text-foreground">
                       <SelectValue placeholder="Select method" />
                     </SelectTrigger>
                     <SelectContent>
@@ -255,6 +261,7 @@ export default function LeadModal({ open, onClose, onSave, lead, mode }: LeadMod
                     value={formData.best_time_to_contact || ""}
                     onChange={(e) => handleChange("best_time_to_contact", e.target.value)}
                     placeholder="e.g., Weekdays 9am-5pm"
+                    className="text-foreground"
                   />
                 </div>
               </div>
@@ -270,7 +277,7 @@ export default function LeadModal({ open, onClose, onSave, lead, mode }: LeadMod
                     value={formData.loan_purpose || ""}
                     onValueChange={(value) => handleChange("loan_purpose", value)}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="text-foreground">
                       <SelectValue placeholder="Select purpose" />
                     </SelectTrigger>
                     <SelectContent>
@@ -287,7 +294,7 @@ export default function LeadModal({ open, onClose, onSave, lead, mode }: LeadMod
                     value={formData.property_type || ""}
                     onValueChange={(value) => handleChange("property_type", value)}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="text-foreground">
                       <SelectValue placeholder="Select type" />
                     </SelectTrigger>
                     <SelectContent>
@@ -309,6 +316,7 @@ export default function LeadModal({ open, onClose, onSave, lead, mode }: LeadMod
                     value={formData.estimated_loan_amount || ""}
                     onChange={(e) => handleChange("estimated_loan_amount", parseFloat(e.target.value))}
                     placeholder="350000"
+                    className="text-foreground"
                   />
                 </div>
                 <div>
@@ -319,6 +327,7 @@ export default function LeadModal({ open, onClose, onSave, lead, mode }: LeadMod
                     value={formData.estimated_property_value || ""}
                     onChange={(e) => handleChange("estimated_property_value", parseFloat(e.target.value))}
                     placeholder="500000"
+                    className="text-foreground"
                   />
                 </div>
               </div>
@@ -334,7 +343,7 @@ export default function LeadModal({ open, onClose, onSave, lead, mode }: LeadMod
                     value={formData.employment_status || ""}
                     onValueChange={(value) => handleChange("employment_status", value)}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="text-foreground">
                       <SelectValue placeholder="Select status" />
                     </SelectTrigger>
                     <SelectContent>
@@ -352,7 +361,7 @@ export default function LeadModal({ open, onClose, onSave, lead, mode }: LeadMod
                     value={formData.urgency_level || ""}
                     onValueChange={(value) => handleChange("urgency_level", value)}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="text-foreground">
                       <SelectValue placeholder="Select urgency" />
                     </SelectTrigger>
                     <SelectContent>
@@ -373,6 +382,7 @@ export default function LeadModal({ open, onClose, onSave, lead, mode }: LeadMod
                   onChange={(e) => handleChange("notes", e.target.value)}
                   rows={3}
                   placeholder="Additional notes about this lead..."
+                  className="text-foreground"
                 />
               </div>
             </div>

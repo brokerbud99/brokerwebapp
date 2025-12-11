@@ -109,7 +109,7 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
                       flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors
                       ${isActive
                         ? "bg-primary text-primary-foreground"
-                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                        : "text-foreground hover:bg-muted hover:text-foreground"
                       }
                     `}
                   >
@@ -122,7 +122,7 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
 
             {/* User Section */}
             <div className="pt-4 border-t border-border space-y-3 mt-4">
-              {/* <DashboardThemeSelector /> */}
+              <DashboardThemeSelector />
 
               <div className="flex items-center space-x-2 px-4 py-2">
                 <User className="h-5 w-5 text-muted-foreground flex-shrink-0" />

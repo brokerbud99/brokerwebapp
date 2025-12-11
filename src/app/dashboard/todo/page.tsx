@@ -48,8 +48,8 @@ export default function TodoPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">To Do</h1>
-          <p className="text-gray-600 mt-1">Manage your tasks and activities</p>
+          <h1 className="text-3xl font-bold text-foreground">To Do</h1>
+          <p className="text-muted-foreground mt-1">Manage your tasks and activities</p>
         </div>
         <Button className="bg-primary hover:bg-primary/90">
           <Plus className="h-4 w-4 mr-2" />
@@ -63,7 +63,7 @@ export default function TodoPage() {
           <CardContent className="p-4">
             <div className="text-center">
               <p className="text-4xl font-bold text-primary mb-2">12</p>
-              <p className="text-gray-600">Total Tasks</p>
+              <p className="text-muted-foreground">Total Tasks</p>
             </div>
           </CardContent>
         </Card>
@@ -71,7 +71,7 @@ export default function TodoPage() {
           <CardContent className="p-4">
             <div className="text-center">
               <p className="text-4xl font-bold text-orange-600 mb-2">9</p>
-              <p className="text-gray-600">Pending</p>
+              <p className="text-muted-foreground">Pending</p>
             </div>
           </CardContent>
         </Card>
@@ -79,7 +79,7 @@ export default function TodoPage() {
           <CardContent className="p-4">
             <div className="text-center">
               <p className="text-4xl font-bold text-green-600 mb-2">3</p>
-              <p className="text-gray-600">Completed</p>
+              <p className="text-muted-foreground">Completed</p>
             </div>
           </CardContent>
         </Card>
@@ -88,47 +88,44 @@ export default function TodoPage() {
       {/* Todo List */}
       <Card className="border-0 shadow-md">
         <CardContent className="p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Your Tasks</h3>
+          <h3 className="text-lg font-semibold text-foreground mb-4">Your Tasks</h3>
           <div className="space-y-3">
             {dummyTodos.map((todo) => (
               <div
                 key={todo.id}
-                className={`border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors ${
-                  todo.completed ? "bg-gray-50" : "bg-white"
-                }`}
+                className={`border border-border rounded-lg p-4 hover:border-primary transition-colors ${todo.completed ? "bg-muted/50" : "bg-card"
+                  }`}
               >
                 <div className="flex items-start gap-3">
                   {todo.completed ? (
                     <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
                   ) : (
-                    <Circle className="h-5 w-5 text-gray-400 mt-0.5 flex-shrink-0" />
+                    <Circle className="h-5 w-5 text-muted-foreground mt-0.5 flex-shrink-0" />
                   )}
                   <div className="flex-1">
                     <h4
-                      className={`font-semibold mb-1 ${
-                        todo.completed ? "text-gray-500 line-through" : "text-gray-900"
-                      }`}
+                      className={`font-semibold mb-1 ${todo.completed ? "text-muted-foreground line-through" : "text-foreground"
+                        }`}
                     >
                       {todo.title}
                     </h4>
-                    <p className="text-sm text-gray-600 mb-2">{todo.description}</p>
+                    <p className="text-sm text-muted-foreground mb-2">{todo.description}</p>
                     <div className="flex items-center gap-4 text-xs">
                       <span
-                        className={`px-2 py-1 rounded-full font-medium ${
-                          todo.priority === "High"
+                        className={`px-2 py-1 rounded-full font-medium ${todo.priority === "High"
                             ? "bg-red-100 text-red-700"
                             : todo.priority === "Medium"
-                            ? "bg-yellow-100 text-yellow-700"
-                            : "bg-blue-100 text-blue-700"
-                        }`}
+                              ? "bg-yellow-100 text-yellow-700"
+                              : "bg-blue-100 text-blue-700"
+                          }`}
                       >
                         {todo.priority}
                       </span>
-                      <div className="flex items-center text-gray-600">
+                      <div className="flex items-center text-muted-foreground">
                         <Calendar className="h-3 w-3 mr-1" />
                         {todo.dueDate}
                       </div>
-                      <div className="flex items-center text-gray-600">
+                      <div className="flex items-center text-muted-foreground">
                         <User className="h-3 w-3 mr-1" />
                         {todo.assignee}
                       </div>

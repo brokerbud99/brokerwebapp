@@ -73,8 +73,8 @@ export default function DocumentsAIPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Documents AI</h1>
-          <p className="text-gray-600 mt-1">AI-powered document processing and verification</p>
+          <h1 className="text-3xl font-bold text-foreground">Documents AI</h1>
+          <p className="text-muted-foreground mt-1">AI-powered document processing and verification</p>
         </div>
         <div className="flex gap-2">
           <Button
@@ -99,8 +99,8 @@ export default function DocumentsAIPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Total Documents</p>
-                <p className="text-2xl font-bold text-gray-900">247</p>
+                <p className="text-sm text-muted-foreground">Total Documents</p>
+                <p className="text-2xl font-bold text-foreground">247</p>
               </div>
               <FileText className="h-8 w-8 text-primary opacity-50" />
             </div>
@@ -110,7 +110,7 @@ export default function DocumentsAIPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Verified</p>
+                <p className="text-sm text-muted-foreground">Verified</p>
                 <p className="text-2xl font-bold text-green-600">198</p>
               </div>
               <CheckCircle className="h-8 w-8 text-green-600 opacity-50" />
@@ -121,7 +121,7 @@ export default function DocumentsAIPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Processing</p>
+                <p className="text-sm text-muted-foreground">Processing</p>
                 <p className="text-2xl font-bold text-blue-600">32</p>
               </div>
               <div className="h-8 w-8 bg-blue-100 rounded-full animate-pulse" />
@@ -132,7 +132,7 @@ export default function DocumentsAIPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Review Required</p>
+                <p className="text-sm text-muted-foreground">Review Required</p>
                 <p className="text-2xl font-bold text-orange-600">17</p>
               </div>
               <AlertCircle className="h-8 w-8 text-orange-600 opacity-50" />
@@ -147,10 +147,10 @@ export default function DocumentsAIPage() {
           <div className="flex items-start gap-3">
             <FileText className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className="text-lg font-semibold text-foreground mb-2">
                 Intelligent Document Processing
               </h3>
-              <p className="text-gray-700 mb-3">
+              <p className="text-muted-foreground mb-3">
                 Our AI automatically extracts key information from documents, verifies authenticity,
                 and flags potential issues for review. Save hours of manual data entry and reduce errors.
               </p>
@@ -176,19 +176,19 @@ export default function DocumentsAIPage() {
       {/* Documents List */}
       <Card className="border-0 shadow-md">
         <CardContent className="p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Documents</h3>
+          <h3 className="text-lg font-semibold text-foreground mb-4">Recent Documents</h3>
           <div className="space-y-4">
             {dummyDocuments.map((doc) => (
               <div
                 key={doc.id}
-                className="border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors"
+                className="border border-border rounded-lg p-4 hover:border-primary transition-colors"
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-start gap-3 flex-1">
-                    <FileText className="h-5 w-5 text-gray-400 mt-1 flex-shrink-0" />
+                    <FileText className="h-5 w-5 text-muted-foreground mt-1 flex-shrink-0" />
                     <div className="flex-1">
-                      <h4 className="font-semibold text-gray-900 mb-1">{doc.name}</h4>
-                      <p className="text-sm text-gray-600">{doc.type}</p>
+                      <h4 className="font-semibold text-foreground mb-1">{doc.name}</h4>
+                      <p className="text-sm text-muted-foreground">{doc.type}</p>
                     </div>
                   </div>
                   <span
@@ -203,19 +203,19 @@ export default function DocumentsAIPage() {
                   </span>
                 </div>
 
-                <div className="bg-gray-50 rounded-lg p-3 mb-3">
-                  <p className="text-xs text-gray-500 mb-2 font-medium">AI Extracted Data:</p>
+                <div className="bg-muted/50 rounded-lg p-3 mb-3">
+                  <p className="text-xs text-muted-foreground mb-2 font-medium">AI Extracted Data:</p>
                   <div className="grid md:grid-cols-3 gap-2 text-sm">
                     {Object.entries(doc.aiExtracted).map(([key, value]) => (
                       <div key={key}>
-                        <span className="text-gray-600 capitalize">{key}:</span>
-                        <span className="font-medium text-gray-900 ml-1">{value}</span>
+                        <span className="text-muted-foreground capitalize">{key}:</span>
+                        <span className="font-medium text-foreground ml-1">{value}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between text-xs text-gray-600">
+                <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <div>
                     Uploaded by <span className="font-medium">{doc.uploadedBy}</span> on {doc.uploadDate}
                   </div>

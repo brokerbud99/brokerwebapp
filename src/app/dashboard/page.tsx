@@ -34,9 +34,9 @@ export default function DashboardPage() {
               <div>
                 <p className="text-sm text-muted-foreground">Active Applications</p>
                 <p className="text-3xl font-bold text-foreground">12</p>
-                <p className="text-xs text-secondary mt-1">3 pending approval</p>
+                <p className="text-xs text-muted-foreground mt-1">3 pending approval</p>
               </div>
-              <Activity className="h-10 w-10 text-secondary opacity-50" />
+              <Activity className="h-10 w-10 text-muted-foreground opacity-50" />
             </div>
           </CardContent>
         </Card>
@@ -47,9 +47,9 @@ export default function DashboardPage() {
               <div>
                 <p className="text-sm text-muted-foreground">This Month</p>
                 <p className="text-3xl font-bold text-foreground">$2.4M</p>
-                <p className="text-xs text-accent mt-1">Loan volume</p>
+                <p className="text-xs text-muted-foreground mt-1">Loan volume</p>
               </div>
-              <DollarSign className="h-10 w-10 text-accent opacity-50" />
+              <DollarSign className="h-10 w-10 text-primary opacity-50" />
             </div>
           </CardContent>
         </Card>
@@ -94,12 +94,12 @@ export default function DashboardPage() {
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
-                    <CheckSquare className="h-6 w-6 text-secondary" />
+                    <CheckSquare className="h-6 w-6 text-orange-500" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-foreground mb-1">To Do</h3>
                     <p className="text-sm text-muted-foreground">Track your tasks and daily activities</p>
-                    <p className="text-xs text-secondary mt-2 font-medium">9 pending tasks</p>
+                    <p className="text-xs text-orange-500 mt-2 font-medium">9 pending tasks</p>
                   </div>
                 </div>
               </CardContent>
@@ -128,12 +128,12 @@ export default function DashboardPage() {
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                    <Mic className="h-6 w-6 text-accent" />
+                    <Mic className="h-6 w-6 text-rose-500" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-foreground mb-1">Voice AI</h3>
                     <p className="text-sm text-muted-foreground">AI-powered call recording and insights</p>
-                    <p className="text-xs text-accent mt-2 font-medium">23 calls this week</p>
+                    <p className="text-xs text-rose-500 mt-2 font-medium">23 calls this week</p>
                   </div>
                 </div>
               </CardContent>
@@ -145,12 +145,12 @@ export default function DashboardPage() {
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
-                    <FileSearch className="h-6 w-6 text-secondary" />
+                    <FileSearch className="h-6 w-6 text-purple-500" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-foreground mb-1">Documents AI</h3>
                     <p className="text-sm text-muted-foreground">Intelligent document processing</p>
-                    <p className="text-xs text-secondary mt-2 font-medium">17 pending review</p>
+                    <p className="text-xs text-purple-500 mt-2 font-medium">17 pending review</p>
                   </div>
                 </div>
               </CardContent>
@@ -178,7 +178,7 @@ export default function DashboardPage() {
 
             <div className="flex items-start gap-3 pb-3 border-b border-border">
               <div className="w-8 h-8 bg-secondary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <Users className="h-4 w-4 text-secondary" />
+                <Users className="h-4 w-4 text-orange-500" />
               </div>
               <div className="flex-1">
                 <p className="text-sm text-foreground">
@@ -190,7 +190,7 @@ export default function DashboardPage() {
 
             <div className="flex items-start gap-3 pb-3 border-b border-border">
               <div className="w-8 h-8 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <FileText className="h-4 w-4 text-accent" />
+                <FileText className="h-4 w-4 text-rose-500" />
               </div>
               <div className="flex-1">
                 <p className="text-sm text-foreground">
@@ -202,7 +202,7 @@ export default function DashboardPage() {
 
             <div className="flex items-start gap-3">
               <div className="w-8 h-8 bg-secondary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <Mic className="h-4 w-4 text-secondary" />
+                <Mic className="h-4 w-4 text-purple-500" />
               </div>
               <div className="flex-1">
                 <p className="text-sm text-foreground">

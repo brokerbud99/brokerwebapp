@@ -39,8 +39,8 @@ export default function VoiceAIPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Voice AI</h1>
-          <p className="text-gray-600 mt-1">AI-powered call recording and analysis</p>
+          <h1 className="text-3xl font-bold text-foreground">Voice AI</h1>
+          <p className="text-muted-foreground mt-1">AI-powered call recording and analysis</p>
         </div>
         <Button className="bg-primary hover:bg-primary/90">
           <Phone className="h-4 w-4 mr-2" />
@@ -54,8 +54,8 @@ export default function VoiceAIPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Total Calls</p>
-                <p className="text-2xl font-bold text-gray-900">156</p>
+                <p className="text-sm text-muted-foreground">Total Calls</p>
+                <p className="text-2xl font-bold text-foreground">156</p>
               </div>
               <Phone className="h-8 w-8 text-primary opacity-50" />
             </div>
@@ -65,7 +65,7 @@ export default function VoiceAIPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">This Week</p>
+                <p className="text-sm text-muted-foreground">This Week</p>
                 <p className="text-2xl font-bold text-blue-600">23</p>
               </div>
               <Calendar className="h-8 w-8 text-blue-600 opacity-50" />
@@ -76,7 +76,7 @@ export default function VoiceAIPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Avg Duration</p>
+                <p className="text-sm text-muted-foreground">Avg Duration</p>
                 <p className="text-2xl font-bold text-green-600">11m</p>
               </div>
               <Clock className="h-8 w-8 text-green-600 opacity-50" />
@@ -87,7 +87,7 @@ export default function VoiceAIPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Positive Sentiment</p>
+                <p className="text-sm text-muted-foreground">Positive Sentiment</p>
                 <p className="text-2xl font-bold text-purple-600">78%</p>
               </div>
               <div className="h-8 w-8 bg-purple-100 rounded-full" />
@@ -102,8 +102,8 @@ export default function VoiceAIPage() {
           <div className="flex items-start gap-3">
             <Mic className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">AI-Powered Insights</h3>
-              <p className="text-gray-700">
+              <h3 className="text-lg font-semibold text-foreground mb-2">AI-Powered Insights</h3>
+              <p className="text-muted-foreground">
                 Voice AI automatically transcribes calls, analyzes sentiment, extracts key topics, and
                 provides actionable insights to improve customer interactions and streamline your workflow.
               </p>
@@ -115,32 +115,31 @@ export default function VoiceAIPage() {
       {/* Call Recordings */}
       <Card className="border-0 shadow-md">
         <CardContent className="p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Calls</h3>
+          <h3 className="text-lg font-semibold text-foreground mb-4">Recent Calls</h3>
           <div className="space-y-4">
             {dummyCallRecordings.map((call) => (
               <div
                 key={call.id}
-                className="border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors"
+                className="border border-border rounded-lg p-4 hover:border-primary transition-colors"
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex-1">
-                    <h4 className="font-semibold text-gray-900 mb-1">{call.clientName}</h4>
-                    <p className="text-sm text-gray-600 mb-2">{call.summary}</p>
+                    <h4 className="font-semibold text-foreground mb-1">{call.clientName}</h4>
+                    <p className="text-sm text-muted-foreground mb-2">{call.summary}</p>
                   </div>
                   <span
-                    className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      call.sentiment === "Positive"
+                    className={`px-3 py-1 rounded-full text-xs font-medium ${call.sentiment === "Positive"
                         ? "bg-green-100 text-green-700"
                         : call.sentiment === "Neutral"
-                        ? "bg-gray-100 text-gray-700"
-                        : "bg-red-100 text-red-700"
-                    }`}
+                          ? "bg-muted text-muted-foreground"
+                          : "bg-red-100 text-red-700"
+                      }`}
                   >
                     {call.sentiment}
                   </span>
                 </div>
 
-                <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
+                <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
                   <div className="flex items-center">
                     <Calendar className="h-4 w-4 mr-1" />
                     {call.date}
@@ -152,7 +151,7 @@ export default function VoiceAIPage() {
                 </div>
 
                 <div className="mb-3">
-                  <p className="text-xs text-gray-500 mb-1">Key Topics:</p>
+                  <p className="text-xs text-muted-foreground mb-1">Key Topics:</p>
                   <div className="flex flex-wrap gap-2">
                     {call.keyTopics.map((topic, idx) => (
                       <span

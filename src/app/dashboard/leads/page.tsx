@@ -132,8 +132,8 @@ export default function LeadsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Leads</h1>
-          <p className="text-gray-600 mt-1">Manage your mortgage leads and prospects</p>
+          <h1 className="text-3xl font-bold text-foreground">Leads</h1>
+          <p className="text-muted-foreground mt-1">Manage your mortgage leads and prospects</p>
         </div>
         <Button className="bg-primary hover:bg-primary/90" onClick={handleAddLead}>
           <Plus className="h-4 w-4 mr-2" />
@@ -147,8 +147,8 @@ export default function LeadsPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Total Leads</p>
-                <p className="text-2xl font-bold text-gray-900">{leads.length}</p>
+                <p className="text-sm text-muted-foreground">Total Leads</p>
+                <p className="text-2xl font-bold text-foreground">{leads.length}</p>
               </div>
               <Users className="h-8 w-8 text-primary opacity-50" />
             </div>
@@ -158,7 +158,7 @@ export default function LeadsPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">New</p>
+                <p className="text-sm text-muted-foreground">New</p>
                 <p className="text-2xl font-bold text-blue-600">
                   {leads.filter(l => l.lead_status === 'new').length}
                 </p>
@@ -171,7 +171,7 @@ export default function LeadsPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Qualified</p>
+                <p className="text-sm text-muted-foreground">Qualified</p>
                 <p className="text-2xl font-bold text-green-600">
                   {leads.filter(l => l.lead_status === 'qualified').length}
                 </p>
@@ -184,7 +184,7 @@ export default function LeadsPage() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Converted</p>
+                <p className="text-sm text-muted-foreground">Converted</p>
                 <p className="text-2xl font-bold text-purple-600">
                   {leads.filter(l => l.lead_status === 'converted').length}
                 </p>
@@ -198,11 +198,11 @@ export default function LeadsPage() {
       {/* Leads List */}
       <Card className="border-0 shadow-md">
         <CardContent className="p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Leads</h3>
+          <h3 className="text-lg font-semibold text-foreground mb-4">Recent Leads</h3>
 
           {loading && (
             <div className="text-center py-8">
-              <p className="text-gray-500">Loading leads...</p>
+              <p className="text-muted-foreground">Loading leads...</p>
             </div>
           )}
 
@@ -217,65 +217,65 @@ export default function LeadsPage() {
 
           {!loading && !error && leads.length === 0 && (
             <div className="text-center py-8">
-              <p className="text-gray-500">No leads found. Add your first lead to get started!</p>
+              <p className="text-muted-foreground">No leads found. Add your first lead to get started!</p>
             </div>
           )}
 
           {!loading && !error && leads.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {leads.map((lead) => (
-              <div
-                key={lead.id}
-                className="border border-gray-200 rounded-lg p-4 hover:border-primary transition-colors"
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <h4 className="font-semibold text-gray-900">
-                    {lead.first_name} {lead.last_name}
-                  </h4>
-                  <div className="flex items-center gap-2">
-                    <span
-                      className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(
-                        lead.lead_status
-                      )}`}
-                    >
-                      {lead.lead_status.charAt(0).toUpperCase() + lead.lead_status.slice(1)}
-                    </span>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => handleEditLead(lead)}
-                      className="h-8 w-8 p-0"
-                    >
-                      <Edit className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-                <div className="space-y-2 text-sm">
-                  <div className="flex items-center text-gray-600">
-                    <Mail className="h-4 w-4 mr-2 flex-shrink-0" />
-                    <span className="truncate">{lead.email}</span>
-                  </div>
-                  <div className="flex items-center text-gray-600">
-                    <Phone className="h-4 w-4 mr-2 flex-shrink-0" />
-                    {lead.mobile_phone || 'N/A'}
-                  </div>
-                  <div className="flex items-center gap-4 text-gray-600">
-                    <div className="flex items-center">
-                      <span>Loan:</span>
-                      <span className="font-medium ml-1">
-                        {formatCurrency(lead.estimated_loan_amount)}
+                <div
+                  key={lead.id}
+                  className="border border-border rounded-lg p-4 hover:border-primary transition-colors"
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <h4 className="font-semibold text-foreground">
+                      {lead.first_name} {lead.last_name}
+                    </h4>
+                    <div className="flex items-center gap-2">
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(
+                          lead.lead_status
+                        )}`}
+                      >
+                        {lead.lead_status.charAt(0).toUpperCase() + lead.lead_status.slice(1)}
                       </span>
-                    </div>
-                    <div className="flex items-center">
-                      <span>Purpose:</span>
-                      <span className="font-medium ml-1">
-                        {formatLoanPurpose(lead.loan_purpose)}
-                      </span>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => handleEditLead(lead)}
+                        className="h-8 w-8 p-0"
+                      >
+                        <Edit className="h-4 w-4" />
+                      </Button>
                     </div>
                   </div>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex items-center text-muted-foreground">
+                      <Mail className="h-4 w-4 mr-2 flex-shrink-0" />
+                      <span className="truncate">{lead.email}</span>
+                    </div>
+                    <div className="flex items-center text-muted-foreground">
+                      <Phone className="h-4 w-4 mr-2 flex-shrink-0" />
+                      {lead.mobile_phone || 'N/A'}
+                    </div>
+                    <div className="flex items-center gap-4 text-muted-foreground">
+                      <div className="flex items-center">
+                        <span>Loan:</span>
+                        <span className="font-medium ml-1">
+                          {formatCurrency(lead.estimated_loan_amount)}
+                        </span>
+                      </div>
+                      <div className="flex items-center">
+                        <span>Purpose:</span>
+                        <span className="font-medium ml-1">
+                          {formatLoanPurpose(lead.loan_purpose)}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
             </div>
           )}
         </CardContent>

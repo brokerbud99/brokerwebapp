@@ -147,10 +147,10 @@ export function UploadModal({ isOpen, onClose, onUploadComplete }: UploadModalPr
 
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
-            <DialogContent className="sm:max-w-[500px] text-gray-900">
+            <DialogContent className="sm:max-w-[500px] text-foreground">
                 <DialogHeader>
-                    <DialogTitle className="text-gray-900">Upload Documents</DialogTitle>
-                    <p className="text-sm text-gray-500">
+                    <DialogTitle className="text-foreground">Upload Documents</DialogTitle>
+                    <p className="text-sm text-muted-foreground">
                         Select an application or choose adhoc upload. You can upload multiple files.
                     </p>
                 </DialogHeader>
@@ -166,23 +166,23 @@ export function UploadModal({ isOpen, onClose, onUploadComplete }: UploadModalPr
                                     if (checked === true) setSelectedAppId('')
                                 }}
                             />
-                            <Label htmlFor="adhoc" className="text-gray-900">Adhoc Upload (No Application)</Label>
+                            <Label htmlFor="adhoc" className="text-foreground">Adhoc Upload (No Application)</Label>
                         </div>
-                        <Button variant="ghost" size="sm" onClick={resetForm} className="text-red-500 hover:text-red-700 hover:bg-red-50">
+                        <Button variant="ghost" size="sm" onClick={resetForm} className="text-destructive hover:text-destructive hover:bg-destructive/10">
                             Clear All
                         </Button>
                     </div>
 
                     {!isAdhoc && (
                         <div className="space-y-2">
-                            <Label className="text-gray-900">Application</Label>
+                            <Label className="text-foreground">Application</Label>
                             <Select value={selectedAppId} onValueChange={setSelectedAppId} disabled={loadingApps}>
-                                <SelectTrigger className="text-gray-900">
+                                <SelectTrigger className="text-foreground">
                                     <SelectValue placeholder={loadingApps ? "Loading..." : "Select Application"} />
                                 </SelectTrigger>
                                 <SelectContent>
                                     {applications.map((app) => (
-                                        <SelectItem key={app.id} value={app.id.toString()} className="text-gray-900">
+                                        <SelectItem key={app.id} value={app.id.toString()} className="text-foreground">
                                             {app.application_id}
                                         </SelectItem>
                                     ))}
@@ -192,14 +192,14 @@ export function UploadModal({ isOpen, onClose, onUploadComplete }: UploadModalPr
                     )}
 
                     <div className="space-y-2">
-                        <Label className="text-gray-900">Document Category</Label>
+                        <Label className="text-foreground">Document Category</Label>
                         <Select value={category} onValueChange={setCategory}>
-                            <SelectTrigger className="text-gray-900">
+                            <SelectTrigger className="text-foreground">
                                 <SelectValue placeholder="Select Category" />
                             </SelectTrigger>
                             <SelectContent>
                                 {DOCUMENT_CATEGORIES.map((cat) => (
-                                    <SelectItem key={cat} value={cat} className="text-gray-900">
+                                    <SelectItem key={cat} value={cat} className="text-foreground">
                                         {cat}
                                     </SelectItem>
                                 ))}
@@ -208,8 +208,8 @@ export function UploadModal({ isOpen, onClose, onUploadComplete }: UploadModalPr
                     </div>
 
                     <div className="space-y-2">
-                        <Label className="text-gray-900">Files</Label>
-                        <div className="border-2 border-dashed rounded-lg p-4 text-center hover:bg-gray-50 transition-colors cursor-pointer relative">
+                        <Label className="text-foreground">Files</Label>
+                        <div className="border-2 border-dashed rounded-lg p-4 text-center hover:bg-muted/50 transition-colors cursor-pointer relative">
                             <Input
                                 type="file"
                                 multiple
@@ -219,23 +219,23 @@ export function UploadModal({ isOpen, onClose, onUploadComplete }: UploadModalPr
                             />
                             <div className="flex flex-col items-center gap-2">
                                 <Upload className="h-8 w-8 text-gray-400" />
-                                <span className="text-sm text-gray-500">Click to select files (PDF, Word, Excel, Text)</span>
+                                <span className="text-sm text-muted-foreground">Click to select files (PDF, Word, Excel, Text)</span>
                             </div>
                         </div>
 
                         {files.length > 0 && (
                             <div className="mt-4">
-                                <h4 className="text-sm font-medium mb-2 text-gray-900">Selected Files ({files.length})</h4>
+                                <h4 className="text-sm font-medium mb-2 text-foreground">Selected Files ({files.length})</h4>
                                 <div className="space-y-2 max-h-[150px] overflow-y-auto">
                                     {files.map((file, index) => (
-                                        <div key={index} className="flex items-center justify-between text-sm bg-gray-100 p-2 rounded">
+                                        <div key={index} className="flex items-center justify-between text-sm bg-muted p-2 rounded">
                                             <div className="flex items-center gap-2 truncate max-w-[300px]">
                                                 {category && (
                                                     <Badge variant="secondary" className="shrink-0">
                                                         {category}
                                                     </Badge>
                                                 )}
-                                                <span className="truncate text-gray-900">{file.name}</span>
+                                                <span className="truncate text-foreground">{file.name}</span>
                                             </div>
                                             <Button variant="ghost" size="sm" onClick={() => removeFile(index)}>
                                                 <X className="h-4 w-4 text-gray-500" />
@@ -249,7 +249,7 @@ export function UploadModal({ isOpen, onClose, onUploadComplete }: UploadModalPr
                 </div>
 
                 <DialogFooter>
-                    <Button variant="outline" onClick={onClose} disabled={uploading} className="bg-white border-primary text-primary hover:bg-primary hover:text-primary-foreground">Cancel</Button>
+                    <Button variant="outline" onClick={onClose} disabled={uploading} className="text-foreground hover:bg-muted">Cancel</Button>
                     <Button onClick={handleSubmit} disabled={uploading || (!isAdhoc && !selectedAppId) || !category || files.length === 0}>
                         {uploading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                         Upload

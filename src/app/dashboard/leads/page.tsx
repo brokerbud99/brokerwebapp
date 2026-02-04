@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Users, Plus, Phone, Mail, Edit } from "lucide-react"
+import { Users, Plus, Phone, Mail, Edit, FileText, Loader2 } from "lucide-react"
 import LeadModal from "@/components/leads/LeadModal"
 import { getLeads, createLead, updateLead, type Lead as APILead } from "@/lib/api/leads"
 import { useUserProfile } from "@/contexts/UserProfileContext"
@@ -19,6 +19,7 @@ export default function LeadsPage() {
   const [leads, setLeads] = useState<Lead[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [creatingAppForLead, setCreatingAppForLead] = useState<string | null>(null)
 
   // Fetch leads on component mount
   useEffect(() => {
@@ -99,6 +100,37 @@ export default function LeadsPage() {
   const handleModalClose = () => {
     setModalOpen(false)
   }
+
+  const handleCreateApplication = async (lead: Lead) => {
+    if (lead.lead_status === 'converted') {
+      alert('This lead has already been converted to an application.')
+      return
+    }
+
+    try {
+      setCreatingAppForLead(lead.id)
+      const response = await fetch('/api/application', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ lead_id: lead.id })
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to create application')
+      }
+
+      alert(`Application ${result.data.application_id} created successfully!`)
+      await fetchLeads() // Refresh leads to show updated status
+    } catch (err) {
+      console.error('Error creating application:', err)
+      alert(err instanceof Error ? err.message : 'Failed to create application')
+    } finally {
+      setCreatingAppForLead(null)
+    }
+  }
+
   const formatCurrency = (amount?: number) => {
     if (!amount) return "N/A"
     return new Intl.NumberFormat('en-US', {
@@ -272,6 +304,32 @@ export default function LeadsPage() {
                           {formatLoanPurpose(lead.loan_purpose)}
                         </span>
                       </div>
+                    </div>
+                    <div className="mt-3 pt-3 border-t border-border">
+                      <Button
+                        size="sm"
+                        variant={lead.lead_status === 'converted' ? 'outline' : 'default'}
+                        disabled={lead.lead_status === 'converted' || creatingAppForLead === lead.id}
+                        onClick={() => handleCreateApplication(lead)}
+                        className="w-full"
+                      >
+                        {creatingAppForLead === lead.id ? (
+                          <>
+                            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                            Creating...
+                          </>
+                        ) : lead.lead_status === 'converted' ? (
+                          <>
+                            <FileText className="h-4 w-4 mr-2" />
+                            Application Created
+                          </>
+                        ) : (
+                          <>
+                            <FileText className="h-4 w-4 mr-2" />
+                            Create Application
+                          </>
+                        )}
+                      </Button>
                     </div>
                   </div>
                 </div>

@@ -1,9 +1,11 @@
 "use client"
 
 import React, { useEffect, useRef } from 'react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 export function AnimatedGridBackground() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const { mode } = useTheme();
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -16,10 +18,13 @@ export function AnimatedGridBackground() {
         let width = window.innerWidth;
         let height = window.innerHeight;
 
-        // Grid configuration
+        // Grid configuration - theme aware
         const gridSize = 40;
-        const gridColor = '#00ff88'; // Terminal green
-        const activeLineColor = '#00d9ff'; // Terminal cyan
+        const isDark = mode === 'dark';
+        const backgroundColor = isDark ? '#0f172a' : '#ffffff';
+        const gridLineColor = isDark ? 'rgba(34, 197, 94, 0.08)' : 'rgba(34, 197, 94, 0.15)';
+        const activeLineColor = isDark ? 'rgba(34, 197, 94, 0.5)' : 'rgba(34, 197, 94, 0.6)';
+        const glowColor = '#22c55e';
 
         // Active lines state
         const activeLines: {
@@ -41,11 +46,11 @@ export function AnimatedGridBackground() {
         resize();
 
         const drawGrid = () => {
-            ctx.fillStyle = '#050505'; // Very dark background
+            ctx.fillStyle = backgroundColor;
             ctx.fillRect(0, 0, width, height);
 
             // Draw static grid
-            ctx.strokeStyle = 'rgba(0, 255, 136, 0.05)';
+            ctx.strokeStyle = gridLineColor;
             ctx.lineWidth = 1;
 
             // Vertical lines
@@ -91,10 +96,12 @@ export function AnimatedGridBackground() {
                 }
 
                 const opacity = Math.sin(line.life / line.maxLife * Math.PI);
-                ctx.strokeStyle = `rgba(0, 217, 255, ${opacity * 0.5})`;
+                ctx.strokeStyle = isDark
+                    ? `rgba(34, 197, 94, ${opacity * 0.5})`
+                    : `rgba(34, 197, 94, ${opacity * 0.7})`;
                 ctx.lineWidth = 2;
                 ctx.shadowBlur = 10;
-                ctx.shadowColor = activeLineColor;
+                ctx.shadowColor = glowColor;
 
                 ctx.beginPath();
                 if (line.vertical) {
@@ -125,9 +132,11 @@ export function AnimatedGridBackground() {
             window.removeEventListener('resize', resize);
             cancelAnimationFrame(animationFrameId);
         };
-    }, []);
+    }, [mode]);
+
+    const isDark = mode === 'dark';
 
     return <canvas ref={canvasRef} className="fixed inset-0 z-0 pointer-events-none" style={{
-        background: '#050505'
+        background: isDark ? '#0f172a' : '#ffffff'
     }} />;
 }

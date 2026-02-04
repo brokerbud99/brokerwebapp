@@ -1,4 +1,4 @@
-
+"use client"
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -16,15 +16,16 @@ import {
   BarChart3,
   Lock,
   ListTodo,
+  Sun,
+  Moon,
 } from "lucide-react"
-import { ThemeSelector } from "@/components/ThemeSelector"
-import { BackgroundSelector } from "@/components/BackgroundSelector"
-// import { BackgroundRenderer } from "@/components/BackgroundRenderer"
 import { AnimatedGridBackground } from "@/components/AnimatedGridBackground"
+import { useTheme } from "@/contexts/ThemeContext"
 
 export default function LandingPage() {
+  const { mode, toggleTheme } = useTheme()
   return (
-    <div className="relative min-h-screen bg-[#050505] text-white overflow-x-hidden selection:bg-[#00ff88] selection:text-black">
+    <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary selection:text-primary-foreground">
       <AnimatedGridBackground />
       {/* <BackgroundRenderer /> */}
 
@@ -39,8 +40,19 @@ export default function LandingPage() {
               <span className="text-2xl font-bold text-primary">DealTrack</span>
             </Link>
             <div className="flex items-center space-x-3">
-              {/* <BackgroundSelector /> */}
-              {/* <ThemeSelector /> */}
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleTheme}
+                className="text-foreground hover:bg-primary/10"
+                title={mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                {mode === 'dark' ? (
+                  <Sun className="h-5 w-5" />
+                ) : (
+                  <Moon className="h-5 w-5" />
+                )}
+              </Button>
               <Button className="bg-secondary hover:bg-secondary/90 text-secondary-foreground border-2 border-primary">
                 <Link href="/login">Login</Link>
               </Button>

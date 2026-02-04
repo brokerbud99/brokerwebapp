@@ -1,57 +1,53 @@
 "use client"
 
 import React, { createContext, useContext, useEffect, useState } from "react"
-import { Theme, themes } from "@/lib/themes"
+
+type ThemeMode = 'light' | 'dark'
 
 interface ThemeContextType {
-    currentTheme: Theme
-    setTheme: (themeId: string) => void
+    mode: ThemeMode
+    toggleTheme: () => void
+    setMode: (mode: ThemeMode) => void
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-    const [currentTheme, setCurrentTheme] = useState<Theme>(themes.find(t => t.id === 'modern-forest-mint') || themes[0])
+    const [mode, setModeState] = useState<ThemeMode>('light')
     const [mounted, setMounted] = useState(false)
 
     // Initialize theme from local storage
     useEffect(() => {
-        const savedThemeId = localStorage.getItem("dealtrack-theme")
-        if (savedThemeId) {
-            const theme = themes.find((t) => t.id === savedThemeId)
-            if (theme) {
-                setCurrentTheme(theme)
-            }
+        const savedMode = localStorage.getItem("dealtrack-theme-mode") as ThemeMode
+        if (savedMode === 'dark' || savedMode === 'light') {
+            setModeState(savedMode)
         }
         setMounted(true)
     }, [])
 
-    // Apply theme colors to CSS variables
+    // Apply theme mode to document
     useEffect(() => {
-        const root = document.documentElement
-        const colors = currentTheme.colors
-
-        Object.entries(colors).forEach(([key, value]) => {
-            // Convert camelCase to kebab-case for CSS variables
-            const cssVar = `--${key.replace(/([A-Z])/g, "-$1").toLowerCase()}`
-            root.style.setProperty(cssVar, value)
-        })
-
-        // Save to local storage
         if (mounted) {
-            localStorage.setItem("dealtrack-theme", currentTheme.id)
+            const root = document.documentElement
+            if (mode === 'dark') {
+                root.classList.add('dark')
+            } else {
+                root.classList.remove('dark')
+            }
+            localStorage.setItem("dealtrack-theme-mode", mode)
         }
-    }, [currentTheme, mounted])
+    }, [mode, mounted])
 
-    const setTheme = (themeId: string) => {
-        const theme = themes.find((t) => t.id === themeId)
-        if (theme) {
-            setCurrentTheme(theme)
-        }
+    const toggleTheme = () => {
+        setModeState(prev => prev === 'light' ? 'dark' : 'light')
+    }
+
+    const setMode = (newMode: ThemeMode) => {
+        setModeState(newMode)
     }
 
     return (
-        <ThemeContext.Provider value={{ currentTheme, setTheme }}>
+        <ThemeContext.Provider value={{ mode, toggleTheme, setMode }}>
             {children}
         </ThemeContext.Provider>
     )

@@ -3,59 +3,90 @@
 @tailwind utilities;
 
 @layer base {
+  /* Light Mode (default) */
   :root {
-    /* Main Background - bg-neutral-950 (Very dark, nearly black) */
-    --background: 0 0% 3.9%;
-    --foreground: 48 100% 96.1%;
-    /* text-yellow-50 (Pale yellow/cream) */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
 
-    /* Secondary Background & Cards - bg-neutral-900 (Deep neutral gray) */
-    --card: 0 0% 9%;
-    --card-foreground: 48 100% 96.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
-    /* Popover colors */
-    --popover: 0 0% 9%;
-    --popover-foreground: 48 100% 96.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
-    /* Primary Color (Buttons/Highlights) - bg-yellow-600 (Gold) */
-    --primary: 48 94% 53%;
-    --primary-foreground: 0 0% 3.9%;
+    /* Primary - Green */
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary Accent - text-yellow-500 (Bright Gold) */
-    --secondary: 48 96% 56%;
-    --secondary-foreground: 0 0% 3.9%;
+    /* Secondary */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
 
-    /* Muted colors - using neutral tones */
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 63.9%;
-    /* text-neutral-400 (Medium gray) */
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    /* Accent colors - secondary gold accent */
-    --accent: 48 96% 56%;
-    --accent-foreground: 0 0% 3.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
 
-    /* Semantic colors */
-    --destructive: 4 100% 60%;
-    --destructive-foreground: 48 100% 96.1%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    /* Success color */
-    --success: 145 63% 49%;
-    --success-foreground: 48 100% 96.1%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
 
-    /* Warning color */
-    --warning: 36 100% 50%;
-    --warning-foreground: 0 0% 3.9%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
 
-    /* Info color */
-    --info: 211 100% 50%;
-    --info-foreground: 48 100% 96.1%;
+    --info: 217 91% 60%;
+    --info-foreground: 0 0% 100%;
 
-    /* Borders - border-neutral-800 (Dark gray border) */
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 48 94% 53%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 142 76% 36%;
 
     --radius: 0.5rem;
+  }
+
+  /* Dark Mode */
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary - Green */
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary */
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --info: 217 91% 60%;
+    --info-foreground: 0 0% 100%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 142 76% 36%;
   }
 }
 

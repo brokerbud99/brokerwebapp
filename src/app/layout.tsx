@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { ThemeProvider } from '@/contexts/ThemeContext'
-import { BackgroundProvider } from '@/contexts/BackgroundContext'
 
 export const metadata: Metadata = {
   title: 'Broker Web App',
@@ -17,9 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ThemeProvider>
-          <BackgroundProvider>
-            {children}
-          </BackgroundProvider>
+          {children}
         </ThemeProvider>
       </body>
     </html>

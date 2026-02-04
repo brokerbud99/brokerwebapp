@@ -15,10 +15,11 @@ import {
   Menu,
   X,
   Home,
+  Sun,
+  Moon,
 } from "lucide-react"
 import { UserProfileProvider, useUserProfile } from "@/contexts/UserProfileContext"
-import { DashboardThemeProvider, useDashboardTheme } from "@/contexts/DashboardThemeContext"
-import { DashboardThemeSelector } from "@/components/DashboardThemeSelector"
+import { useTheme } from "@/contexts/ThemeContext"
 
 const menuItems = [
   {
@@ -57,7 +58,7 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const { profile } = useUserProfile()
-  const { themeStyles } = useDashboardTheme()
+  const { mode, toggleTheme } = useTheme()
 
   const handleLogout = () => {
     // Add logout logic here
@@ -65,7 +66,7 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="min-h-screen bg-background transition-colors duration-300" style={themeStyles}>
+    <div className="min-h-screen bg-background transition-colors duration-300">
       {/* Header */}
       <header className="bg-background/80 backdrop-blur-md border-b border-border fixed top-0 left-0 right-0 z-20 transition-colors duration-300">
         <div className="px-4 py-4">
@@ -122,13 +123,26 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
 
             {/* User Section */}
             <div className="pt-4 border-t border-border space-y-3 mt-4">
-              <DashboardThemeSelector />
-
-              <div className="flex items-center space-x-2 px-4 py-2">
-                <User className="h-5 w-5 text-muted-foreground flex-shrink-0" />
-                <span className="text-sm text-foreground truncate">
-                  {profile?.user_email || 'Loading...'}
-                </span>
+              <div className="flex items-center justify-between px-4 py-2">
+                <div className="flex items-center space-x-2 min-w-0">
+                  <User className="h-5 w-5 text-muted-foreground flex-shrink-0" />
+                  <span className="text-sm text-foreground truncate">
+                    {profile?.user_email || 'Loading...'}
+                  </span>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={toggleTheme}
+                  className="h-8 w-8 text-foreground hover:bg-primary/10 flex-shrink-0"
+                  title={mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                >
+                  {mode === 'dark' ? (
+                    <Sun className="h-4 w-4" />
+                  ) : (
+                    <Moon className="h-4 w-4" />
+                  )}
+                </Button>
               </div>
               <Button
                 onClick={handleLogout}
@@ -161,9 +175,7 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
     <UserProfileProvider>
-      <DashboardThemeProvider>
-        <DashboardLayoutInner>{children}</DashboardLayoutInner>
-      </DashboardThemeProvider>
+      <DashboardLayoutInner>{children}</DashboardLayoutInner>
     </UserProfileProvider>
   )
 }

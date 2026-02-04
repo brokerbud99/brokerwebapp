@@ -79,7 +79,7 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
               >
                 {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
-              <h1 className="text-xl font-bold text-foreground">BrokerBud</h1>
+              <h1 className="text-xl font-bold text-foreground">DealTrack</h1>
             </div>
           </div>
         </div>

@@ -97,7 +97,7 @@ export default function DashboardPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-muted-foreground">This Month</p>
-                <p className="text-3xl font-bold text-foreground">$2.4M</p>
+                <p className="text-3xl font-bold text-foreground">$0M</p>
                 <p className="text-xs text-muted-foreground mt-1">Loan volume</p>
               </div>
               <DollarSign className="h-10 w-10 text-primary opacity-50" />

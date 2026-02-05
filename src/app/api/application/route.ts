@@ -67,11 +67,12 @@ export async function GET(request: NextRequest) {
             )
         }
 
-        // Fetch applications for this company
+        // Fetch applications for this user
         const { data, error } = await supabase
             .from('application')
             .select('*')
             .eq('company_code', profile.company_code)
+            .eq('user_email', profile.user_email)
             .order('created_at', { ascending: false })
 
         if (error) {

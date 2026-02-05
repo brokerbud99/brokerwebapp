@@ -24,6 +24,7 @@ export default function DashboardPage() {
           .from('leads')
           .select('*', { count: 'exact', head: true })
           .eq('company_code', profile.company_code)
+          .eq('user_email', profile.user_email)
 
         if (leadsError) {
           console.error('Error fetching leads count:', leadsError)
@@ -36,6 +37,7 @@ export default function DashboardPage() {
           .from('application')
           .select('*', { count: 'exact', head: true })
           .eq('company_code', profile.company_code)
+          .eq('user_email', profile.user_email)
 
         if (appsError) {
           console.error('Error fetching applications count:', appsError)

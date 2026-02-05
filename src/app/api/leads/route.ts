@@ -44,10 +44,26 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    // Fetch leads (RLS will automatically filter by company_code)
+    // Fetch user profile to get company_code and user_email
+    const { data: profile, error: profileError } = await supabase
+      .from('user_profiles')
+      .select('company_code, user_email')
+      .eq('user_email', user.email)
+      .single()
+
+    if (profileError || !profile) {
+      return NextResponse.json(
+        { error: 'User profile not found' },
+        { status: 404 }
+      )
+    }
+
+    // Fetch leads filtered by company_code and user_email
     const { data, error } = await supabase
       .from('leads')
       .select('*')
+      .eq('company_code', profile.company_code)
+      .eq('user_email', profile.user_email)
       .order('created_at', { ascending: false })
 
     if (error) {
